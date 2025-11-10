@@ -1,0 +1,13 @@
+metric,value
+desc_subfolder,globalRGBhisto/rgb32
+descriptor_label,hist_rgb_32bins
+metric_name,L2
+topk,15
+N,591
+timestamp,1109-1923
+timestamp_full,1109192312
+top1_acc,0.42470389170896783
+top5_acc,0.6277495769881557
+mean_P_at_15,0.18116187253243088
+mean_R_at_15,0.09426379036987602
+mAP,0.13877742153256437

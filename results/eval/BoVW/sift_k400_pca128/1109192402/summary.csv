@@ -1,0 +1,13 @@
+metric,value
+desc_subfolder,BoVW/sift_k400_pca128
+descriptor_label,bow_sift_k400_pca128
+metric_name,L2
+topk,15
+N,591
+timestamp,1109-1924
+timestamp_full,1109192402
+top1_acc,0.1658206429780034
+top5_acc,0.41455160744500846
+mean_P_at_15,0.10174844895657077
+mean_R_at_15,0.0531474857070574
+mAP,0.08875238548803605

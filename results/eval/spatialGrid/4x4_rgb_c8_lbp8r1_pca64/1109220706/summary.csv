@@ -1,0 +1,13 @@
+metric,value
+desc_subfolder,spatialGrid/4x4_rgb_c8_lbp8r1_pca64
+descriptor_label,spatial_grid_4x4_rgb_c8_lbp8r1_pca64
+metric_name,MAHAL
+topk,15
+N,591
+timestamp,1109-2207
+timestamp_full,1109220706
+top1_acc,0.4856175972927242
+top5_acc,0.7478849407783418
+mean_P_at_15,0.2592216582064298
+mean_R_at_15,0.1356314594438246
+mAP,0.17316497277054418

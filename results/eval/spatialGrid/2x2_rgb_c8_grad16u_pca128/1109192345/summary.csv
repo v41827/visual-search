@@ -1,0 +1,13 @@
+metric,value
+desc_subfolder,spatialGrid/2x2_rgb_c8_grad16u_pca128
+descriptor_label,spatial_grid_2x2_rgb_c8_grad16u_pca128
+metric_name,L2
+topk,15
+N,591
+timestamp,1109-1923
+timestamp_full,1109192345
+top1_acc,0.40947546531302875
+top5_acc,0.6209813874788495
+mean_P_at_15,0.15690919345741677
+mean_R_at_15,0.08185992933241465
+mAP,0.11893789082829961

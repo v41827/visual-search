@@ -1,0 +1,13 @@
+metric,value
+desc_subfolder,spatialGrid/2x2_rgb_c8_colorOnly
+descriptor_label,spatial_grid_2x2_rgb_c8_coloronly
+metric_name,L2
+topk,15
+N,591
+timestamp,1109-1923
+timestamp_full,1109192318
+top1_acc,0.4433164128595601
+top5_acc,0.7258883248730964
+mean_P_at_15,0.23846587704455727
+mean_R_at_15,0.12492059144321681
+mAP,0.18717695302447676

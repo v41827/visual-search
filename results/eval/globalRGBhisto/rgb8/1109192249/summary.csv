@@ -1,0 +1,13 @@
+metric,value
+desc_subfolder,globalRGBhisto/rgb8
+descriptor_label,hist_rgb_8bins
+metric_name,CHI2
+topk,15
+N,591
+timestamp,1109-1922
+timestamp_full,1109192249
+top1_acc,0.5194585448392555
+top5_acc,0.7428087986463621
+mean_P_at_15,0.26824591088550476
+mean_R_at_15,0.14083486723722607
+mAP,0.20987727584200186

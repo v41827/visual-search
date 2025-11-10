@@ -1,0 +1,13 @@
+metric,value
+desc_subfolder,BoVW/sift_k400
+descriptor_label,bow_sift_k400
+metric_name,L2
+topk,15
+N,591
+timestamp,1109-1924
+timestamp_full,1109192400
+top1_acc,0.3062605752961083
+top5_acc,0.6023688663282571
+mean_P_at_15,0.18465877044557247
+mean_R_at_15,0.09615301501191288
+mAP,0.13774656649627956

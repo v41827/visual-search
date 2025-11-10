@@ -1,0 +1,13 @@
+metric,value
+desc_subfolder,BoVW/harris_k800
+descriptor_label,bow_harris_k800
+metric_name,CHI2
+topk,15
+N,591
+timestamp,1109-2232
+timestamp_full,1109223250
+top1_acc,0.43993231810490696
+top5_acc,0.7191201353637902
+mean_P_at_15,0.283248730964467
+mean_R_at_15,0.14805907492289452
+mAP,0.22354086401326376

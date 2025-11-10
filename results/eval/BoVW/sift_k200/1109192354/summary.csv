@@ -1,0 +1,13 @@
+metric,value
+desc_subfolder,BoVW/sift_k200
+descriptor_label,bow_sift_k200
+metric_name,CHI2
+topk,15
+N,591
+timestamp,1109-1923
+timestamp_full,1109192354
+top1_acc,0.38071065989847713
+top5_acc,0.6734348561759729
+mean_P_at_15,0.22233502538071062
+mean_R_at_15,0.11562723396874686
+mAP,0.17126395484728596

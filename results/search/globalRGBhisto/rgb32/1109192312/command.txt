@@ -1,0 +1,1 @@
+python Skeleton_Python/cvpr_visualsearch.py --desc-subfolder globalRGBhisto/rgb32 --topk 15 --no-show --plot-query 10_10_s.bmp --eval-map --vs-metric l2 --eval-metric l2

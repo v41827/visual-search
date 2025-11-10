@@ -1,0 +1,13 @@
+metric,value
+desc_subfolder,spatialGrid/4x4_hsv_c16_lbp16r1
+descriptor_label,spatial_grid_4x4_hsv_c16_lbp16r1
+metric_name,CHI2
+topk,15
+N,591
+timestamp,1109-2130
+timestamp_full,1109213022
+top1_acc,0.571912013536379
+top5_acc,0.7681895093062606
+mean_P_at_15,0.2747884940778341
+mean_R_at_15,0.14399145753648623
+mAP,0.21034696346318035

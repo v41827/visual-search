@@ -1,0 +1,26 @@
+# Ignore everything by default
+*
+
+# Allow directories so we can whitelist specific folders/files
+!*/
+
+# Keep the Skeleton_Python directory and all its contents
+!Skeleton_Python/
+!Skeleton_Python/**
+
+# Keep shell scripts in the repo root
+!*.sh
+
+# Keep results directory and the specific subfolders (allow placeholders)
+!results/
+!results/**
+!results/eval/
+!results/eval/**
+!results/search/
+!results/search/**
+
+# Keep this .gitignore
+!.gitignore
+
+# Note: Git does not track empty directories. Add placeholder files to ensure they are committed:
+# touch results/.gitkeep results/eval/.gitkeep results/search/.gitkeep

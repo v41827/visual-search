@@ -1,1 +1,0 @@
-python Skeleton_Python/svm.py --desc-subfolder cnn/resnet18_embed128 --results-dir results --kernel linear --standardize --test-size 0.2

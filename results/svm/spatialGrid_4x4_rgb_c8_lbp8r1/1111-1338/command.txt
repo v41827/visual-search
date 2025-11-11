@@ -1,1 +1,0 @@
-python Skeleton_Python/svm.py --desc-subfolder spatialGrid/4x4_rgb_c8_lbp8r1 --results-dir results --kernel linear --standardize --test-size 0.2

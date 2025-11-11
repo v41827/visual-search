@@ -1,1 +1,0 @@
-python cnn_scratch_train.py

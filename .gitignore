@@ -22,13 +22,13 @@
 !tools/
 !tools/**
 
-# Keep results directory and the specific subfolders (allow placeholders)
+# Keep the results folder itself, but ignore its contents by default
 !results/
-!results/**
-!results/eval/
-!results/eval/**
-!results/search/
-!results/search/**
+!results/.gitkeep
+
+# Ignore macOS Finder files everywhere
+.DS_Store
+**/.DS_Store
 
 # Keep this .gitignore
 !.gitignore

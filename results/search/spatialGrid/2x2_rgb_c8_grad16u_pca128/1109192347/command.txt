@@ -1,1 +1,0 @@
-python Skeleton_Python/cvpr_visualsearch.py --desc-subfolder spatialGrid/2x2_rgb_c8_grad16u_pca128 --topk 15 --no-show --plot-query 10_10_s.bmp --eval-map --vs-metric mahal --eval-metric mahal --mahal-lambda 1e-6

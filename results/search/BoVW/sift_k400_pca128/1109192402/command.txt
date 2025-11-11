@@ -1,1 +1,0 @@
-python Skeleton_Python/cvpr_visualsearch.py --desc-subfolder BoVW/sift_k400_pca128 --topk 15 --no-show --plot-query 10_10_s.bmp --eval-map --vs-metric l2 --eval-metric l2

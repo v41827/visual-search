@@ -1,1 +1,0 @@
-python Skeleton_Python/cvpr_visualsearch.py --desc-subfolder spatialGrid/4x4_hsv_c16_lbp16r1 --topk 15 --no-show --eval-map --vs-metric chi2 --eval-metric chi2

@@ -8,8 +8,19 @@
 !Skeleton_Python/
 !Skeleton_Python/**
 
-# Keep shell scripts in the repo root
-!*.sh
+# Keep only the refresh_report.sh script; ignore other shell scripts
+!refresh_report.sh
+
+# Keep top-level README
+!README.md
+
+# Keep CNN training scripts at repo root
+!cnn_train.py
+!cnn_scratch_train.py
+
+# Keep tools folder (batch helpers)
+!tools/
+!tools/**
 
 # Keep results directory and the specific subfolders (allow placeholders)
 !results/

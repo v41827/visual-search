@@ -265,6 +265,7 @@ def _save_eval(results_dir: str, desc_subfolder: str, res: dict, metric: str = '
 
     # PR points
     pr_points = res['pr_points']
+    label = _descriptor_label(desc_subfolder)
     with open(os.path.join(out_dir, 'pr_points.csv'), 'w', newline='') as f:
         w = csv.writer(f, lineterminator='\n')
         w.writerow(['rank', 'precision', 'recall'])
@@ -329,9 +330,17 @@ def _save_eval(results_dir: str, desc_subfolder: str, res: dict, metric: str = '
         plt.plot(pr_points[:, 1], pr_points[:, 0], marker='o')
         plt.xlabel('Recall')
         plt.ylabel('Precision')
-        plt.title('Average PR Curve')
+        plt.xlim(0.0, 1.0)
+        plt.ylim(0.0, 1.0)
+        plt.title(f"Average PR Curve — {label}")
         plt.grid(True, ls='--', alpha=0.4)
-        plt.tight_layout()
+        plt.tight_layout(rect=[0, 0.05, 1, 1])
+        # Add config info below plot
+        subtitle = (
+            f"metric={metric.upper()}, K={topk}, N={res.get('N', 0)}, "
+            f"Top-1={res['top1_acc']*100:.1f}%, Top-5={res['top5_acc']*100:.1f}%"
+        )
+        plt.figtext(0.5, 0.01, subtitle, ha='center', fontsize=9)
         plt.savefig(os.path.join(out_dir, 'pr_curve.png'))
         plt.close()
 
@@ -341,17 +350,16 @@ def _save_eval(results_dir: str, desc_subfolder: str, res: dict, metric: str = '
             plt.plot(qpoints[:, 1], qpoints[:, 0], marker='o')
             plt.xlabel('Recall')
             plt.ylabel('Precision')
-            plt.title(f"PR Curve — {qname}")
+            plt.xlim(0.0, 1.0)
+            plt.ylim(0.0, 1.0)
+            plt.title(f"PR Curve — {qname} — {label}")
             plt.grid(True, ls='--', alpha=0.4)
-            plt.tight_layout()
+            plt.tight_layout(rect=[0, 0.05, 1, 1])
+            plt.figtext(0.5, 0.01, subtitle, ha='center', fontsize=9)
             plt.savefig(os.path.join(out_dir, f'pr_curve_{qstem}.png'))
             plt.close()
 
-        label = _descriptor_label(desc_subfolder)
-        subtitle = (
-            f"metric={metric.upper()}, K={topk}, N={res.get('N', 0)}, "
-            f"Top-1={res['top1_acc']*100:.1f}%, Top-5={res['top5_acc']*100:.1f}%"
-        )
+        # label and subtitle defined above for reuse
 
         # Confusion matrix (matplotlib version)
         plt.figure(figsize=(6, 5))

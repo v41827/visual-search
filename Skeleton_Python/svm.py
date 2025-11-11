@@ -51,7 +51,23 @@ def _labels_from_filenames(files: List[str]) -> np.ndarray:
     return np.array(labels, dtype=int)
 
 
-def _save_results(out_dir: str, y_true: np.ndarray, y_pred: np.ndarray, files: List[str], summary: dict, prefix: str = ""):
+def _descriptor_label(desc_subfolder: str) -> str:
+    s = desc_subfolder.replace('\\', '/').strip('/')
+    low = s.lower()
+    import re
+    m = re.match(r'^globalrgbhisto/rgb(\d+)$', low)
+    if m:
+        return f"hist_rgb_{m.group(1)}bins"
+    if low.startswith('spatialgrid/'):
+        return 'spatial_grid_' + low.split('/', 1)[1].replace('/', '_')
+    if low.startswith('bovw/'):
+        return 'bow_' + low.split('/', 1)[1].replace('/', '_')
+    if low.startswith('cnn/'):
+        return low.replace('/', '_')
+    return low.replace('/', '_')
+
+
+def _save_results(out_dir: str, y_true: np.ndarray, y_pred: np.ndarray, files: List[str], summary: dict, prefix: str = "", descriptor_label: str = ""):
     os.makedirs(out_dir, exist_ok=True)
     # command
     try:
@@ -98,7 +114,10 @@ def _save_results(out_dir: str, y_true: np.ndarray, y_pred: np.ndarray, files: L
         # matplotlib plot with annotations
         plt.figure(figsize=(6, 5))
         plt.imshow(cm, interpolation='nearest', cmap='Blues')
-        plt.title('SVM Confusion Matrix' + (f' ({prefix})' if prefix else ''))
+        title = 'SVM Confusion Matrix — ' + (descriptor_label or 'descriptor')
+        if prefix:
+            title += f' ({prefix})'
+        plt.title(title)
         plt.colorbar()
         plt.xticks(range(len(labels_sorted)), labels_sorted, rotation=90)
         plt.yticks(range(len(labels_sorted)), labels_sorted)
@@ -118,7 +137,10 @@ def _save_results(out_dir: str, y_true: np.ndarray, y_pred: np.ndarray, files: L
                              xticklabels=labels_sorted, yticklabels=labels_sorted, linewidths=0.5, linecolor='white', square=True)
             ax.set_xlabel('Predicted')
             ax.set_ylabel('True')
-            ax.set_title('SVM Confusion Matrix' + (f' ({prefix})' if prefix else ''))
+            title = 'SVM Confusion Matrix — ' + (descriptor_label or 'descriptor')
+            if prefix:
+                title += f' ({prefix})'
+            ax.set_title(title)
             plt.tight_layout()
             plt.savefig(os.path.join(out_dir, f'confusion_matrix_heatmap{suffix}.png'))
             plt.close()
@@ -221,13 +243,14 @@ def main():
             oof_acc = float(_acc(y[oof_mask], y_pred_oof[oof_mask]))
             oof_f1 = float(_f1(y[oof_mask], y_pred_oof[oof_mask], average='macro'))
             summary.update({'oof_accuracy': oof_acc, 'oof_macro_f1': oof_f1})
-            _save_results(out_dir, y[oof_mask], y_pred_oof[oof_mask], [files[i] for i in np.where(oof_mask)[0]], summary, prefix='oof')
-            _save_per_class(out_dir, y[oof_mask], y_pred_oof[oof_mask], prefix='oof')
+        label = _descriptor_label(args.desc_subfolder)
+        _save_results(out_dir, y[oof_mask], y_pred_oof[oof_mask], [files[i] for i in np.where(oof_mask)[0]], summary, prefix='oof', descriptor_label=label)
+        _save_per_class(out_dir, y[oof_mask], y_pred_oof[oof_mask], prefix='oof')
 
         # Also train on full data and save the (optimistic) training CM for reference
         model.fit(X, y)
         y_pred_train = model.predict(X)
-        _save_results(out_dir, y, y_pred_train, files, summary, prefix='train')
+        _save_results(out_dir, y, y_pred_train, files, summary, prefix='train', descriptor_label=label)
         _save_per_class(out_dir, y, y_pred_train, prefix='train')
         print(f"Saved SVM CV results to {out_dir}")
     else:
@@ -248,7 +271,8 @@ def main():
             'N_train': int(Xtr.shape[0]),
             'N_test': int(Xte.shape[0]),
         }
-        _save_results(out_dir, np.array(yte), np.array(y_pred), fte, summary)
+        label = _descriptor_label(args.desc_subfolder)
+        _save_results(out_dir, np.array(yte), np.array(y_pred), fte, summary, prefix='test', descriptor_label=label)
         _save_per_class(out_dir, np.array(yte), np.array(y_pred), prefix='test')
         print(f"Saved SVM results to {out_dir} (accuracy={acc:.4f})")
 

@@ -1,0 +1,11 @@
+metric,value
+kernel,linear
+C,1.0
+gamma,scale
+degree,3
+standardize,True
+test_size,0.2
+accuracy,0.9747899159663865
+macro_f1,0.9723443223443224
+N_train,472
+N_test,119
